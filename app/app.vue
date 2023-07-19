@@ -19,6 +19,7 @@ export default defineNuxtComponent({
 
 <template>
   <div>
+    <img src="/todo.jpg" alt="todo">
     <h1>Hello world</h1>
     <button @click="fetchTodoList()">Fetch</button>
     <ul>
