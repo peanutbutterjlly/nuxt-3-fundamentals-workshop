@@ -41,10 +41,17 @@ function fetchTodoList() {
       {{ completedItems.length }} completed |
       {{ remainingItems.length }} remaining
     </p>
-    <ul>
+    <ul class="list">
       <li v-for="todo in todoList" :key="`todo-id-${todo.id}`">
         <input type="checkbox" :checked="todo.completed" /> {{ todo.title }}
       </li>
     </ul>
   </div>
 </template>
+
+<style>
+.list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+</style>
