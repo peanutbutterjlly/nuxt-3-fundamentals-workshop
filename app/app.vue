@@ -1,28 +1,23 @@
-<script>
-import { defineNuxtComponent } from '#app'
+<script setup>
+import { computed, ref } from 'vue';
 
-export default defineNuxtComponent({
-  data: () => ({
-    todoList: []
-  }),
-  computed: {
-    completedItems() {
-      return this.todoList.filter(item => item.completed)
-    },
-    remainingItems() {
-      return this.todoList.filter(item => !item.completed)
-    }
-  },
-  methods: {
-    fetchTodoList() {
-      fetch('https://jsonplaceholder.typicode.com/todos/')
-        .then(response => response.json())
-        .then(json => {
-          this.todoList = json
-        })
-    }
-  }
-})
+let todoList = ref([]);
+
+const completedItems = computed(() => {
+  return todoList.value.filter((item) => item.completed);
+});
+
+const remainingItems = computed(() => {
+  return todoList.value.filter((item) => !item.completed);
+});
+
+function fetchTodoList() {
+  fetch('https://jsonplaceholder.typicode.com/todos/')
+    .then((response) => response.json())
+    .then((json) => {
+      todoList.value = json;
+    });
+}
 </script>
 
 <template>
