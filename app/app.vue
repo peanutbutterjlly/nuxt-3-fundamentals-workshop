@@ -21,7 +21,7 @@ function fetchTodoList() {
 </script>
 
 <template>
-  <div>
+  <div class="section">
     <img src="/todo.jpg" alt="Todo photo by Glenn Casterns-Peters" />
     <p>
       Photo by
@@ -35,7 +35,7 @@ function fetchTodoList() {
         >Unsplash</a
       >
     </p>
-    <h1>Hello Frontend Masters!</h1>
+    <h1 class="title">Hello Frontend Masters!</h1>
     <button @click="fetchTodoList">Fetch Data</button>
     <p>
       {{ completedItems.length }} completed |
@@ -49,7 +49,8 @@ function fetchTodoList() {
   </div>
 </template>
 
-<style>
+<style lang="scss">
+@import './node_modules/bulma/bulma.scss';
 .list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
