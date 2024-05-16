@@ -36,7 +36,7 @@ function fetchPhotoGallery() {
           <PhotoGallery />
         </div>
         <div class="column">
-          <TodoViewer />
+          <TodoViewer title="new title" />
         </div>
       </div>
     </section>

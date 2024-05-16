@@ -1,5 +1,12 @@
 <script setup>
-import { computed, ref } from 'vue';
+import { computed, defineProps, ref } from 'vue';
+
+defineProps({
+  title: {
+    type: String,
+    default: 'Hello Frontend Masters',
+  },
+});
 
 const todoList = ref([]);
 
@@ -34,7 +41,7 @@ function fetchTodoList() {
         >Unsplash</a
       >
     </p>
-    <h1 class="title">Hello Frontend Masters!</h1>
+    <h1 class="title">{{ title }}</h1>
     <button @click="fetchTodoList">Fetch Data</button>
     <p>
       {{ completedItems.length }} completed |
@@ -48,18 +55,4 @@ function fetchTodoList() {
   </div>
 </template>
 
-<style lang="scss">
-:root {
-  --text-color: #{$textColor};
-}
-
-.heading {
-  color: var(--text-color);
-}
-
-.list {
-  color: var(--text-color);
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-}
-</style>
+<style lang="scss"></style>
