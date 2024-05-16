@@ -1,7 +1,5 @@
 <script setup>
 import { computed, ref } from 'vue';
-import PhotoGallery from './components/PhotoGallery.vue';
-import TodoViewer from './components/TodoViewer.vue';
 
 let photoGallery = ref([]);
 
@@ -29,21 +27,26 @@ function fetchPhotoGallery() {
 </script>
 
 <template>
-  <main class="container">
-    <section class="section">
-      <div class="columns">
-        <div class="column">
-          <PhotoGallery />
-        </div>
-        <div class="column">
-          <TodoViewer />
-        </div>
-      </div>
-    </section>
-  </main>
+  <h1 class="title">Photo Gallery</h1>
+  <button @click="fetchPhotoGallery">Fetch Data</button>
+  <p>
+    {{ numberOfPhotos }} photos ({{ oddAlbums.length }} odd albums |
+    {{ evenAlbums.length }} even albums)
+  </p>
+  <ul class="photo-grid">
+    <li
+      class="cell"
+      v-for="photo in onlyAFewPics"
+      :key="`photo-id-${photo.id}`"
+    >
+      <img :src="photo.thumbnailUrl" />
+    </li>
+  </ul>
 </template>
 
 <style lang="scss">
-@import './node_modules/bulma/bulma.sass';
-@import './assets/styles/main.scss';
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
 </style>

@@ -1,22 +1,22 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue';
 
-const todoList = ref([])
+const todoList = ref([]);
 
 const completedItems = computed(() => {
-  return todoList.value.filter(item => item.completed)
-})
+  return todoList.value.filter((item) => item.completed);
+});
 
 const remainingItems = computed(() => {
-  return todoList.value.filter(item => !item.completed)
-})
+  return todoList.value.filter((item) => !item.completed);
+});
 
 function fetchTodoList() {
   fetch('https://jsonplaceholder.typicode.com/todos/')
-    .then(response => response.json())
-    .then(json => {
-      todoList.value = json
-    })
+    .then((response) => response.json())
+    .then((json) => {
+      todoList.value = json;
+    });
 }
 </script>
 
@@ -49,9 +49,6 @@ function fetchTodoList() {
 </template>
 
 <style lang="scss">
-@import './node_modules/bulma/bulma.sass';
-@import './assets/styles/main.scss';
-
 :root {
   --text-color: #{$textColor};
 }
